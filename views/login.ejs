@@ -8,16 +8,20 @@
     <title>Login</title>
   </head>
   <body>
-    <main class="container">
-      <form method="post">
+    <main>
+      <form method="post" action="/login">
+        <h1>Login Now</h1>
         <input
           type="email"
           name="email"
-          placeholder="Enter Email"
-          value="<%=locals.email%>" />
-        <input type="password" name="password" placeholder="Enter Password" />
+          placeholder="Email"
+          value="<%=locals.email%>"
+        />
+        <input type="password" name="password" placeholder="Password" />
+
         <p class="error"><%= locals.message %></p>
-        <button type="submit">Login</button>
+
+        <button type="submit">Log In</button>
       </form>
     </main>
   </body>
