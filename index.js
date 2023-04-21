@@ -3,6 +3,7 @@ import path from "path";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt"
 import { error } from "console";
 
 
@@ -67,7 +68,8 @@ app.post("/register", async (req, res) => {
     if (existedUser) {
         return res.redirect("/login");
     }
-    const user = await User.create({ email, password });
+    const hashedPassword = await bcrypt.hash(password,10);
+    const user = await User.create({ email, password:hashedPassword });
     // const token = jwt.sign({ _id: user._id }, "sdfdfsfsdfeasdbcb");
     // res.cookie("token", token, {
     //     httpOnly: true,
